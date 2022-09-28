@@ -1,0 +1,18 @@
+{% extends 'basic.html' %}
+
+{% block title %} CreateView {% endblock %}
+
+{% block body %}
+<form enctype="multipart/form-data" method="POST">
+
+    <!-- Security token -->
+    {% csrf_token %}
+
+    <!-- Using the formset -->
+    {{ form.as_p }}
+
+    <input type="submit" value="Submit">
+</form>
+<a href="{% url 'StudentList' %}"><button type="button" class="btn btn-dark">Go to StudentList</button></a>
+
+ {% endblock %}

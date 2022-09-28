@@ -1,0 +1,62 @@
+{% extends 'basic.html' %}
+
+{% block body %}
+List view...
+<ul>
+    {% for i in object_list %}
+
+    <li>{{i.Title}}</li>
+    <li>{{i.Description}}</li>
+
+    <hr/>
+    {% empty %}
+    <li>No Objects Yet</li>
+
+    {% endfor %}
+
+</ul>
+
+<div class="d-flex justify-content-center align-items-center">
+    <div class="dropdown mx-2">
+        <a aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" href="#"
+           id="dropdownMenuLink"
+           role="button">
+            StudentDetail
+        </a>
+
+        <ul aria-labelledby="dropdownMenuLink" class="dropdown-menu">
+            {% for i in object_list %}
+            <li><a class="dropdown-item" href="{% url 'StudentDetail' i.pk %}">{{i.pk}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="dropdown mx-2">
+        <a aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" href="#"
+           id="dropdownMenuLink1"
+           role="button">
+            StudentUpdate
+        </a>
+
+        <ul aria-labelledby="dropdownMenuLink1" class="dropdown-menu">
+            {% for i in object_list %}
+            <li><a class="dropdown-item" href="{% url 'StudentUpdate' i.pk %}">{{i.pk}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="dropdown mx-2">
+        <a aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" href="#"
+           id="dropdownMenuLink2"
+           role="button">
+            StudentDelete
+        </a>
+
+        <ul aria-labelledby="dropdownMenuLink2" class="dropdown-menu">
+            {% for i in object_list %}
+            <li><a class="dropdown-item" href="{% url 'StudentDelete' i.pk %}">{{i.pk}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
