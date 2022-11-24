@@ -2,16 +2,38 @@
 
 {% block content %}
 
-hi user index
+<div class="d-flex">
+    <div class="left_side">
+        <div class="profile_img_container">
+            <img class="profile_img" src="{{photo_url.url}}" alt="" srcset="">
+            <div>{{user.username}}</div>
+        </div>
+    </div>
 
-<form action="{% url 'user_index' %}" method="post">
-    {% csrf_token %}
-    {{user_form.as_p}}
-    {{user_profile_form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+    <div class="container userprofile_form">
+        <h2 class="mb-4 text-center">
+            User Profile
+        </h2>
+        <form class="row g-3" action="{% url 'user_index' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for user_field in user_form %}
+            <div class="col-md-6">
+                {{user_field.label_tag}}
+                {{user_field}}
+            </div>
+            {% endfor %}
 
-
-
+            {% for profile_field in user_profile_form %}
+            <div class="col-md-6">
+                {{profile_field.label_tag}}
+                {{profile_field}}
+            </div>
+            {% endfor %}
+            <div class="col-12 text-center mt-4">
+                <input class="btn btn-primary" type="submit" value="Save">
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}

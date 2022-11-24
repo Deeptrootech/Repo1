@@ -2,11 +2,20 @@
 
 {% block content %}
 
+<div class="form_image">
+    <form action="{% url 'add_extra_services' %}" class="row" method="POST">
+        {% csrf_token %}
+        {% for extra_service_field in extra_service_form %}
+        <div class="col-12 mb-2">
+            {{extra_service_field.label_tag}}
+            {{extra_service_field}}
+        </div>
+        {% endfor %}
+        <div class="col-12 text-center mt-4">
+            <input class="btn btn-primary" type="submit" value="Save">
+        </div>
+    </form>
+</div>
 
-<form action="." method="post">
-    {% csrf_token %}
-    {{extra_service_form.as_p}}
-    <input type="submit" value="Submit">
-</form>
 
 {% endblock %}

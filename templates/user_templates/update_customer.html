@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{% url 'update_customer' update_id  %}" method="POST">
-    {% csrf_token %}
-    {{customer_form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+
+<div class="form_image">
+    <form action="{% url 'update_customer' update_id %}" class="row" method="POST">
+        {% csrf_token %}
+        {{customer_form.as_p}}
+        <div class="col-12 text-center mt-4">
+            <input class="btn btn-primary" type="submit" value="Save">
+        </div>
+    </form>
+</div>
 
 {% endblock %}

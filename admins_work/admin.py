@@ -1,3 +1,7 @@
+"""
+Just to register models
+"""
+
 from django.contrib import admin
 
 from .models import Userprofile, Rooms, Customer, ExtraServices, Booking

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form_image">
+    <form action="{% url 'add_booking' %}" class="row" method="POST">
+        {% csrf_token %}
+        {% for booking_field in booking_form %}
+        <div class="col-12 mb-2">
+            {{booking_field.label_tag}}
+            {{booking_field}}
+        </div>
+        {% endfor %}
+        <div class="col-12 text-center mt-4">
+            <input class="btn btn-primary" type="submit" value="Save">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+

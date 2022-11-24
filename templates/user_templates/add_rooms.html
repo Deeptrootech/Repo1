@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<form action="{% url 'add_rooms' %}" method="POST">
-    {% csrf_token %}
-    {{rooms_form.as_p}}
-    <input type="submit" value="Submit">
-</form>
-
+<div class="form_image">
+    <form action="{% url 'add_rooms' %}" class="row" method="POST">
+        {% csrf_token %}
+        {% for room_field in rooms_form %}
+        <div class="col-12 mb-2">
+            {{room_field.label_tag}}
+            {{room_field}}
+        </div>
+        {% endfor %}
+        <div class="col-12 text-center mt-4">
+            <input class="btn btn-primary" type="submit" value="Save">
+        </div>
+    </form>
+</div>
 {% endblock %}
